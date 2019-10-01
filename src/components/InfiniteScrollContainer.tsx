@@ -48,7 +48,10 @@ class InfiniteScrollContainer extends React.Component<OwnProps> {
 
   render() {
     return (
-      <div ref={this.ref}>
+      <div
+        className="infinite-scroll-container"
+        ref={this.ref}
+      >
         { this.props.children }
       </div>
     );

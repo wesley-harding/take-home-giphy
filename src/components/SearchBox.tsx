@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {ChangeEvent} from 'react';
 import {RouteComponentProps, withRouter} from 'react-router';
+import './SearchBox.less';
 
 export interface RouteParams {
   query: string;
@@ -45,6 +46,7 @@ class SearchBox extends React.Component<Props, State> {
       >
         <input
           type="search"
+          placeholder="Search for GIFs"
           defaultValue={this.props.match.params.query}
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}

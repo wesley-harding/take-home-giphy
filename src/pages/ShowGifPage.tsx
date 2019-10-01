@@ -8,6 +8,7 @@ import {GifObject} from '../models/Giphy';
 import {RootState} from '../reducers/rootReducer';
 import Spinner from '../components/Spinner';
 import GifFeatureImage from '../components/GifFeatureImage';
+import Header from '../components/Header';
 
 export interface RouteParams {
   id: string;
@@ -35,6 +36,15 @@ class ShowGifPage extends React.Component<Props> {
   }
 
   render() {
+    return (
+      <div className="page show-gif-page">
+        <Header />
+        { this.renderContent() }
+      </div>
+    );
+  }
+
+  renderContent() {
     if (this.props.isLoading) {
       return (
         <Spinner />
@@ -50,9 +60,7 @@ class ShowGifPage extends React.Component<Props> {
     }
 
     return (
-      <div>
-        <GifFeatureImage gifObject={this.props.gifObject} />
-      </div>
+      <GifFeatureImage gifObject={this.props.gifObject} />
     );
   }
 }

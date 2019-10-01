@@ -1,22 +1,23 @@
 import * as React from "react";
-import {HashRouter} from "react-router-dom";
+import {Route, Router, Switch} from "react-router-dom";
 import {Provider} from "react-redux";
-import { LocaleProvider } from "antd";
-import enUS from "antd/lib/locale-provider/en_US";
-import {route} from "./routes";
-import { configureStore, initStore } from "./store/configStore";
+import { configureStore } from "./store/configStore";
+import createBrowserHistory from "history/createBrowserHistory";
+import HomePage from "./pages/HomePage";
 
 const store = configureStore();
-store.dispatch<any>(initStore());
+const history = createBrowserHistory();
 
 class App extends React.Component<{}, {}> {
     public render(): JSX.Element {
         return (
-            <LocaleProvider locale={enUS}>
-                <Provider store={store}>
-                    <HashRouter children={route} />
-                </Provider>
-            </LocaleProvider>
+            <Provider store={store}>
+                <Router history={history}>
+                    <Switch>
+                        <Route path="/" component={HomePage}/>
+                    </Switch>
+                </Router>
+            </Provider>
         );
     }
 }

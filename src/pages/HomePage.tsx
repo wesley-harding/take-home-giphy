@@ -8,12 +8,12 @@ import InfiniteGifList from '../components/InfiniteGifList';
 
 interface Props {
   fetchTrending: () => void;
-  resetGifState: () => void;
+  resetGifListState: () => void;
 }
 
 class HomePage extends React.Component<Props> {
   componentDidMount(): void {
-    this.props.resetGifState();
+    this.props.resetGifListState();
     this.props.fetchTrending();
   }
 
@@ -36,7 +36,7 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch<Action<any>>): Props => ({
   fetchTrending: () => dispatch(fetchTrendingNextPageAsync.request()),
-  resetGifState: () => dispatch(resetGifListState()),
+  resetGifListState: () => dispatch(resetGifListState()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

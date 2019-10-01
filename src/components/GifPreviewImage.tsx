@@ -6,8 +6,7 @@ export interface OwnProps {
   gifObject: GifObject;
 }
 
-// TODO: This needs to support previews and full-size display
-class GifImage extends React.PureComponent<OwnProps> {
+class GifPreviewImage extends React.PureComponent<OwnProps> {
   render() {
     const { fixed_width } = this.props.gifObject.images;
 
@@ -16,9 +15,9 @@ class GifImage extends React.PureComponent<OwnProps> {
     }
 
     return (
-      <div className="gif-image">
+      <div className="gif-preview-image">
         <Link
-          to={`/gifs/${this.props.gifObject.slug}`}
+          to={`/gifs/${this.props.gifObject.id}`}
         >
           <img src={fixed_width.url} />
         </Link>
@@ -27,4 +26,4 @@ class GifImage extends React.PureComponent<OwnProps> {
   }
 }
 
-export default GifImage;
+export default GifPreviewImage;

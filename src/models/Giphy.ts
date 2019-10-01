@@ -5,6 +5,7 @@ import {GiphyImageProps} from './giphy/GiphyImageProps';
 import {GiphyPagination} from './giphy/GiphyPagination';
 import {GiphyResponseMeta} from './giphy/GiphyResponseMeta';
 import {GiphyRequestParameters} from './giphy/GiphyRequestParameters';
+import {GiphyItemResponse} from './giphy/GiphyItemResponse';
 
 export {
   GiphyCollectionResponse as CollectionResponse,
@@ -14,4 +15,5 @@ export {
   GiphyPagination as Pagination,
   GiphyResponseMeta as ResponseMeta,
   GiphyRequestParameters as RequestParameters,
+  GiphyItemResponse as ItemResponse,
 };

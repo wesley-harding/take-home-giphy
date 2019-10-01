@@ -5,7 +5,7 @@ import {RootState} from '../reducers/rootReducer';
 import {CollectionResponse, RequestParameters} from '../models/Giphy';
 
 const selectOffsetParams = (state: RootState) => {
-  const pagination = state.gif.pagination;
+  const pagination = state.gifList.pagination;
 
   return {
     limit: 25,

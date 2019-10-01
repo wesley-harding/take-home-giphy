@@ -13,4 +13,4 @@ export const fetchSearchNextPageAsync = createAsyncAction(
   'gifList/fetch_search_failure',
 )<string, CollectionResponse, Error>();
 
-export const resetGifListState = createAction('gif/reset');
+export const resetGifListState = createAction('gifList/reset');

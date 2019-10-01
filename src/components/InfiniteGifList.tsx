@@ -1,7 +1,7 @@
 import * as React from 'react';
 import InfiniteScrollContainer from './InfiniteScrollContainer';
 import {GifObject} from '../models/Giphy';
-import GifImage from './GifImage';
+import GifPreviewImage from './GifPreviewImage';
 import {RootState} from '../reducers/rootReducer';
 import {connect} from 'react-redux';
 import Spinner from './Spinner';
@@ -58,7 +58,7 @@ class InfiniteGifList extends React.Component<Props> {
       <ul>
         {gifObjects.map((gifObject) => {
           return (
-            <GifImage gifObject={gifObject} key={gifObject.id} />
+            <GifPreviewImage gifObject={gifObject} key={gifObject.id} />
           );
         })}
       </ul>
@@ -107,10 +107,10 @@ class InfiniteGifList extends React.Component<Props> {
 }
 
 const mapStateToProps = (state: RootState): StateProps => ({
-  canLoadMore: state.gif.canLoadMore,
-  hasError: state.gif.hasError,
-  gifObjects: state.gif.gifObjects,
-  isLoading: state.gif.isLoading,
+  canLoadMore: state.gifList.canLoadMore,
+  hasError: state.gifList.hasError,
+  gifObjects: state.gifList.gifObjects,
+  isLoading: state.gifList.isLoading,
 });
 
 export default connect(mapStateToProps)(InfiniteGifList);

@@ -1,20 +1,19 @@
 import * as React from 'react';
 import {Action} from 'typesafe-actions';
 import {Dispatch} from 'redux';
-import {RootState} from '../reducers/rootReducer';
-import {fetchTrendingNextPageAsync} from '../actions/gif.actions';
+import {fetchTrendingNextPageAsync, resetGifState} from '../actions/gif.actions';
 import {connect} from 'react-redux';
 import SearchBox from '../components/SearchBox';
 import InfiniteGifList from '../components/InfiniteGifList';
 
-interface DispatchProps {
+interface Props {
   fetchTrending: () => void;
+  resetGifState: () => void;
 }
-
-interface Props extends DispatchProps {}
 
 class HomePage extends React.Component<Props> {
   componentDidMount(): void {
+    this.props.resetGifState();
     this.props.fetchTrending();
   }
 
@@ -33,12 +32,11 @@ class HomePage extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps = () => ({});
 
-});
-
-const mapDispatchToProps = (dispatch: Dispatch<Action<any>>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<Action<any>>): Props => ({
   fetchTrending: () => dispatch(fetchTrendingNextPageAsync.request()),
+  resetGifState: () => dispatch(resetGifState()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

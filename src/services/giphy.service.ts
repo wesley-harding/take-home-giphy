@@ -1,11 +1,15 @@
 import * as qs from 'query-string';
-import {GiphyTrendingRequestParameters} from '../models/giphy/GiphyTrendingRequestParameters';
+import {RequestParameters} from '../models/Giphy';
 
 const apiKey = process.env.GIPHY_API_KEY;
 const giphyApiBase = 'https://api.giphy.com';
 
-export function trending(params: GiphyTrendingRequestParameters = {}) {
+export function trending(params: RequestParameters = {}) {
   return giphy('/v1/gifs/trending', params);
+}
+
+export function search(params: RequestParameters = {}) {
+  return giphy('/v1/gifs/search', params);
 }
 
 export function giphy(endpoint: string, query: object = {}) {

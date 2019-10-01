@@ -1,5 +1,6 @@
-export interface GiphyTrendingRequestParameters {
+export interface GiphyRequestParameters {
   api_key?: string;
+  q?: string;
   limit?: number;
   offset?: number;
   rating?: string;

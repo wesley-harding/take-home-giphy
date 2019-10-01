@@ -1,34 +1,45 @@
 import {GifReducerState} from './states/GifReducerState';
 import {createReducer} from 'typesafe-actions';
-import {fetchTrendingNextPageAsync} from '../actions/gif.actions';
+import {fetchSearchNextPageAsync, fetchTrendingNextPageAsync, resetGifState} from '../actions/gif.actions';
 
 const initialState: GifReducerState = {
-  isLoading: false,
-  hasError: false,
+  canLoadMore: true,
   gifObjects: [],
+  hasError: false,
+  isLoading: false,
   pagination: undefined,
 };
 
-// TODO: handle error message
-// TODO: handle loading state
-// TODO: handle loading of data
-// TODO: We need to be able reset the list of gif data
-// TODO: Handle list is complete
 export const gifReducer = createReducer<GifReducerState>(initialState)
-  .handleAction(fetchTrendingNextPageAsync.request, (state, action) => ({
+  .handleAction(resetGifState, () => (initialState))
+  .handleAction([
+    fetchTrendingNextPageAsync.request,
+    fetchSearchNextPageAsync.request,
+  ], (state, action) => ({
     ...state,
-    isLoading: true,
     hasError: false,
+    isLoading: true,
   }))
-  .handleAction(fetchTrendingNextPageAsync.success, (state, action) => ({
+  .handleAction([
+    fetchTrendingNextPageAsync.success,
+    fetchSearchNextPageAsync.success,
+  ], (state, action) => {
+    const { pagination } = action.payload;
+
+    return {
+      ...state,
+      canLoadMore: pagination.total_count > pagination.offset + pagination.count,
+      gifObjects: [...state.gifObjects, ...action.payload.data],
+      isLoading: false,
+      pagination,
+    };
+  })
+  .handleAction([
+    fetchTrendingNextPageAsync.failure,
+    fetchSearchNextPageAsync.failure,
+  ], (state, action) => ({
     ...state,
-    isLoading: false,
-    gifObjects: [...state.gifObjects, ...action.payload.data],
-    pagination: action.payload.pagination,
-  }))
-  .handleAction(fetchTrendingNextPageAsync.failure, (state, action) => ({
-    ...state,
-    isLoading: false,
     hasError: true,
+    isLoading: false,
   }))
 ;

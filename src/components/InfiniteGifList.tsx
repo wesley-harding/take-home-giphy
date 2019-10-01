@@ -7,9 +7,10 @@ import {connect} from 'react-redux';
 import Spinner from './Spinner';
 
 export interface StateProps {
-  isLoading: boolean;
+  canLoadMore: boolean;
   hasError: boolean;
   gifObjects: GifObject[];
+  isLoading: boolean;
 }
 
 export interface OwnProps {
@@ -26,7 +27,9 @@ class InfiniteGifList extends React.Component<Props> {
   }
 
   conditionallyLoadMore() {
-    if (!this.props.isLoading && !this.props.hasError) {
+    const { canLoadMore, hasError, isLoading } = this.props;
+
+    if (canLoadMore && !hasError && !isLoading) {
       this.props.loadMoreGifs();
     }
   }
@@ -39,6 +42,7 @@ class InfiniteGifList extends React.Component<Props> {
         { this.renderList() }
         { this.renderLoading() }
         { this.renderError() }
+        { this.renderEndOfList() }
       </InfiniteScrollContainer>
     );
   }
@@ -88,12 +92,25 @@ class InfiniteGifList extends React.Component<Props> {
       </div>
     );
   }
+
+  renderEndOfList() {
+    if(this.props.canLoadMore) {
+      return null;
+    }
+
+    return (
+      <div className="info">
+        No moar GIFs to show :(
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state: RootState): StateProps => ({
-  isLoading: state.gif.isLoading,
+  canLoadMore: state.gif.canLoadMore,
   hasError: state.gif.hasError,
-  gifObjects: state.gif.gifObjects
+  gifObjects: state.gif.gifObjects,
+  isLoading: state.gif.isLoading,
 });
 
 export default connect(mapStateToProps)(InfiniteGifList);

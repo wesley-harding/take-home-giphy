@@ -1,6 +1,6 @@
 import {GifReducerState} from './states/GifReducerState';
 import {createReducer} from 'typesafe-actions';
-import {fetchTrendingAsync} from '../actions/gif.actions';
+import {fetchTrendingNextPageAsync} from '../actions/gif.actions';
 
 const initialState: GifReducerState = {
   isLoading: false,
@@ -15,18 +15,18 @@ const initialState: GifReducerState = {
 // TODO: We need to be able reset the list of gif data
 // TODO: Handle list is complete
 export const gifReducer = createReducer<GifReducerState>(initialState)
-  .handleAction(fetchTrendingAsync.request, (state, action) => ({
+  .handleAction(fetchTrendingNextPageAsync.request, (state, action) => ({
     ...state,
     isLoading: true,
     hasError: false,
   }))
-  .handleAction(fetchTrendingAsync.success, (state, action) => ({
+  .handleAction(fetchTrendingNextPageAsync.success, (state, action) => ({
     ...state,
     isLoading: false,
     gifObjects: [...state.gifObjects, ...action.payload.data],
     pagination: action.payload.pagination,
   }))
-  .handleAction(fetchTrendingAsync.failure, (state, action) => ({
+  .handleAction(fetchTrendingNextPageAsync.failure, (state, action) => ({
     ...state,
     isLoading: false,
     hasError: true,

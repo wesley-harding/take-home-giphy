@@ -1,6 +1,6 @@
 import {all} from 'redux-saga/effects';
 
-import gifSagas from './gif.sagas';
+import gifSagas from './gifList.sagas';
 
 export default function* index() {
   yield all([

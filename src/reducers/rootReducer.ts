@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import {GifReducerState} from './states/GifReducerState';
-import {gifReducer} from './gif.reducer';
+import {GifListReducerState} from './states/GifListReducerState';
+import {gifListReducer} from './gifList.reducer';
 
 export interface RootState {
-  gif: GifReducerState;
+  gif: GifListReducerState;
 }
 
 export const rootReducer = combineReducers({
-  gif: gifReducer,
+  gif: gifListReducer,
 });

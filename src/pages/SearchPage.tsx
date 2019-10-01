@@ -4,7 +4,7 @@ import {Action} from 'typesafe-actions';
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
 import InfiniteGifList from '../components/InfiniteGifList';
-import {fetchSearchNextPageAsync, resetGifState} from '../actions/gif.actions';
+import {fetchSearchNextPageAsync, resetGifListState} from '../actions/gifList.actions';
 import {RouteComponentProps, withRouter} from 'react-router';
 
 export interface RouteParams {
@@ -47,7 +47,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action<any>>, ownProps: Props): D
     const query = ownProps.match.params.query;
     dispatch(fetchSearchNextPageAsync.request(query));
   },
-  resetGifState: () => dispatch(resetGifState()),
+  resetGifState: () => dispatch(resetGifListState()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchPage));

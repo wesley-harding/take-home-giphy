@@ -1,8 +1,8 @@
-import {GifReducerState} from './states/GifReducerState';
+import {GifListReducerState} from './states/GifListReducerState';
 import {createReducer} from 'typesafe-actions';
-import {fetchSearchNextPageAsync, fetchTrendingNextPageAsync, resetGifState} from '../actions/gif.actions';
+import {fetchSearchNextPageAsync, fetchTrendingNextPageAsync, resetGifListState} from '../actions/gifList.actions';
 
-const initialState: GifReducerState = {
+const initialState: GifListReducerState = {
   canLoadMore: true,
   gifObjects: [],
   hasError: false,
@@ -10,8 +10,8 @@ const initialState: GifReducerState = {
   pagination: undefined,
 };
 
-export const gifReducer = createReducer<GifReducerState>(initialState)
-  .handleAction(resetGifState, () => (initialState))
+export const gifListReducer = createReducer<GifListReducerState>(initialState)
+  .handleAction(resetGifListState, () => (initialState))
   .handleAction([
     fetchTrendingNextPageAsync.request,
     fetchSearchNextPageAsync.request,

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {GifObject} from '../models/Giphy';
+import {Link} from 'react-router-dom';
 
 export interface OwnProps {
   gifObject: GifObject;
@@ -16,7 +17,11 @@ class GifImage extends React.PureComponent<OwnProps> {
 
     return (
       <div className="gif-image">
-        <img src={fixed_width.url} />
+        <Link
+          to={`/gifs/${this.props.gifObject.slug}`}
+        >
+          <img src={fixed_width.url} />
+        </Link>
       </div>
     );
   }

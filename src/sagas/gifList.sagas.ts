@@ -1,5 +1,5 @@
 import {takeLatest, put, call, select} from 'redux-saga/effects';
-import {fetchSearchNextPageAsync, fetchTrendingNextPageAsync} from '../actions/gif.actions';
+import {fetchSearchNextPageAsync, fetchTrendingNextPageAsync} from '../actions/gifList.actions';
 import {search, trending} from '../services/giphy.service';
 import {RootState} from '../reducers/rootReducer';
 import {CollectionResponse, RequestParameters} from '../models/Giphy';

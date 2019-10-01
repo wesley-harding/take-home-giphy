@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {GifObject} from '../models/Giphy';
 import GifImage from '../components/GifImage';
 import InfiniteScrollContainer from '../components/InfiniteScrollContainer';
+import SearchBox from '../components/SearchBox';
 
 interface StateProps {
   gifObjects: GifObject[];
@@ -19,14 +20,20 @@ interface DispatchProps {
 interface Props extends StateProps, DispatchProps {}
 
 class HomePage extends React.Component<Props> {
-  public componentDidMount(): void {
+  componentDidMount(): void {
     this.props.fetchTrending();
   }
 
-  public render() {
+  render() {
     return (
       <div>
         <p>Happy coding!</p>
+        <hr/>
+        <SearchBox
+          handleSubmit={() => {
+            console.log('handle submit'); // TODO: Handle submission
+          }}
+        />
         <hr/>
         <InfiniteScrollContainer
           handleMore={() => {

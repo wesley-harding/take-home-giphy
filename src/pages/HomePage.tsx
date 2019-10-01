@@ -2,22 +2,16 @@ import * as React from 'react';
 import {Action} from 'typesafe-actions';
 import {Dispatch} from 'redux';
 import {RootState} from '../reducers/rootReducer';
-import {fetchTrendingAsync} from '../actions/gif.actions';
+import {fetchTrendingNextPageAsync} from '../actions/gif.actions';
 import {connect} from 'react-redux';
-import {GifObject} from '../models/Giphy';
-import GifImage from '../components/GifImage';
-import InfiniteScrollContainer from '../components/InfiniteScrollContainer';
 import SearchBox from '../components/SearchBox';
-
-interface StateProps {
-  gifObjects: GifObject[];
-}
+import InfiniteGifList from '../components/InfiniteGifList';
 
 interface DispatchProps {
   fetchTrending: () => void;
 }
 
-interface Props extends StateProps, DispatchProps {}
+interface Props extends DispatchProps {}
 
 class HomePage extends React.Component<Props> {
   componentDidMount(): void {
@@ -29,49 +23,22 @@ class HomePage extends React.Component<Props> {
       <div>
         <p>Happy coding!</p>
         <hr/>
-        <SearchBox
-          handleSubmit={() => {
-            console.log('handle submit'); // TODO: Handle submission
-          }}
-        />
+        <SearchBox />
         <hr/>
-        <InfiniteScrollContainer
-          handleMore={() => {
-            console.log('load more'); // TODO: load more
-          }}
-        >
-          { this.renderList() }
-        </InfiniteScrollContainer>
+        <InfiniteGifList
+          loadMoreGifs={this.props.fetchTrending}
+        />
       </div>
-    );
-  }
-
-  // TODO: Move to a different component and key the elements
-  renderList() {
-    const { gifObjects } = this.props;
-
-    if (!gifObjects) {
-      return null;
-    }
-
-    return (
-      <ul>
-        { gifObjects.map((gifObject) => {
-          return (
-            <GifImage gifObject={gifObject} />
-          );
-        }) }
-      </ul>
     );
   }
 }
 
-const mapStateToProps = (state: RootState): StateProps => ({
-  gifObjects: state.gif.gifObjects,
+const mapStateToProps = (state: RootState) => ({
+
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<Action<any>>): DispatchProps => ({
-  fetchTrending: () => dispatch(fetchTrendingAsync.request(undefined)),
+  fetchTrending: () => dispatch(fetchTrendingNextPageAsync.request()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

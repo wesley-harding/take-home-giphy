@@ -89,6 +89,10 @@ module.exports = {
             filename: "style.css",
             chunkFilename: "[id].css"
           }),
+        new webpack.EnvironmentPlugin( {
+            "GIPHY_API_KEY": "",
+            "NODE_ENV": "development",
+        } ),
         new webpack.HotModuleReplacementPlugin(),
         // enable HMR globally
         new webpack.NamedModulesPlugin(),

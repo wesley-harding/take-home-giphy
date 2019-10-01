@@ -18,8 +18,8 @@
     "url": "https://github.com/chunliu/typescript-react-hot-reload"
   },
   "dependencies": {
-    "antd": "^3.21.2",
-    "giphy-js-sdk-core": "^1.0.6",
+    "dotenv": "^8.1.0",
+    "query-string": "^6.8.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",

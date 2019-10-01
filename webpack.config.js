@@ -1,3 +1,5 @@
+require( 'dotenv' ).config(); // This needs to be as early as possible so ENV can get updated
+
 const { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -57,13 +59,6 @@ module.exports = {
                         loader: 'ts-loader',
                         options: {
                             transpileOnly: true,
-                            getCustomTransformers: () => ({
-                              before: [ tsImportPluginFactory({
-                                libraryName: 'antd',
-                                libraryDirectory: 'es',
-                                style: 'css',
-                              }) ]
-                            }),
                             compilerOptions: {
                               module: 'es2015'
                             }

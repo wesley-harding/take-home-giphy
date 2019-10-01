@@ -4,7 +4,7 @@
   "description": "A simple template for creating react app using TypeScript with hot reload.",
   "main": "index.js",
   "scripts": {
-    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' --exclude 'src/tests/*.{ts,tsx}'",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' --exclude 'tests/*.{ts,tsx}'",
     "start": "webpack-dev-server",
     "test": "jest",
     "build": "tsc && webpack --progress",

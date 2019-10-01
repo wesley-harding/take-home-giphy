@@ -1,20 +1,31 @@
 import { createStore, applyMiddleware } from "redux";
 import {composeWithDevTools} from "redux-devtools-extension/developmentOnly";
-import thunk from "redux-thunk";
 import { rootReducer } from "../reducers/rootReducer";
+import index from "../sagas";
+import createSagaMiddleware from "@redux-saga/core";
 
-export const configureStore = () => {
+const sagaMiddleware = createSagaMiddleware();
+
+const configureStore = () => {
+    const middleware = [
+        applyMiddleware(sagaMiddleware),
+    ];
+
     if (process.env.NODE_ENV === "production") {
         return createStore(
             rootReducer,
-            applyMiddleware(thunk),
+            ...middleware,
         );
     } else {
         return createStore(
             rootReducer,
             composeWithDevTools(
-                applyMiddleware(thunk),
+              ...middleware,
             ),
         );
     }
 };
+
+export const store = configureStore();
+
+sagaMiddleware.run(index);

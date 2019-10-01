@@ -5,4 +5,4 @@ export const fetchTrendingNextPageAsync = createAsyncAction(
   'gif/fetch_trending_request',
   'gif/fetch_trending_success',
   'gif/fetch_trending_failure',
-)<(undefined), CollectionResponse, Error>();
+)<undefined, CollectionResponse, Error>();

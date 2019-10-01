@@ -7,7 +7,7 @@ import {store} from './store/configStore';
 
 const history = createBrowserHistory();
 
-class App extends React.Component<{}, {}> {
+class App extends React.Component {
     public render(): JSX.Element {
         return (
             <Provider store={store}>

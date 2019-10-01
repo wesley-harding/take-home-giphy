@@ -3,9 +3,6 @@ import {composeWithDevTools} from "redux-devtools-extension/developmentOnly";
 import thunk from "redux-thunk";
 import { rootReducer } from "../reducers/rootReducer";
 
-export interface RootState {
-}
-
 export const configureStore = () => {
     if (process.env.NODE_ENV === "production") {
         return createStore(

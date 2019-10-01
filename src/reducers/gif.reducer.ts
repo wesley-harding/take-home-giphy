@@ -10,11 +10,6 @@ const initialState: GifReducerState = {
   pagination: undefined,
 };
 
-// TODO: handle error message
-// TODO: handle loading state
-// TODO: handle loading of data
-// TODO: We need to be able reset the list of gif data
-// TODO: Handle list is complete
 export const gifReducer = createReducer<GifReducerState>(initialState)
   .handleAction(resetGifState, () => (initialState))
   .handleAction([

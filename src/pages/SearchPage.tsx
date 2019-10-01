@@ -42,7 +42,6 @@ class SearchPage extends React.Component<Props> {
 
 const mapStateToProps = () => ({});
 
-// TODO: Pass params to store
 const mapDispatchToProps = (dispatch: Dispatch<Action<any>>, ownProps: Props): DispatchProps => ({
   fetchSearch: () => {
     const query = ownProps.match.params.query;

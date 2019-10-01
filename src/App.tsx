@@ -1,8 +1,8 @@
-import * as React from "react";
-import {Route, Router, Switch} from "react-router-dom";
-import {Provider} from "react-redux";
-import HomePage from "./pages/HomePage";
-import {createBrowserHistory} from "history";
+import * as React from 'react';
+import {Route, Router, Switch} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import HomePage from './pages/HomePage';
+import {createBrowserHistory} from 'history';
 import {store} from './store/configStore';
 
 const history = createBrowserHistory();

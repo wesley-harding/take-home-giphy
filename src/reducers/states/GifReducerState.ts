@@ -1,9 +1,7 @@
-import {GifObject, Pagination} from '../../models/Giphy';
+import {GifObject} from '../../models/Giphy';
 
 export interface GifReducerState {
-  canLoadMore: boolean;
-  gifObjects: GifObject[];
+  gifObject?: GifObject;
   hasError: boolean;
   isLoading: boolean;
-  pagination?: Pagination;
 }

@@ -1,19 +1,19 @@
 import * as React from 'react';
 import {Action} from 'typesafe-actions';
 import {Dispatch} from 'redux';
-import {fetchTrendingNextPageAsync, resetGifState} from '../actions/gif.actions';
+import {fetchTrendingNextPageAsync, resetGifListState} from '../actions/gifList.actions';
 import {connect} from 'react-redux';
 import SearchBox from '../components/SearchBox';
 import InfiniteGifList from '../components/InfiniteGifList';
 
 interface Props {
   fetchTrending: () => void;
-  resetGifState: () => void;
+  resetGifListState: () => void;
 }
 
 class HomePage extends React.Component<Props> {
   componentDidMount(): void {
-    this.props.resetGifState();
+    this.props.resetGifListState();
     this.props.fetchTrending();
   }
 
@@ -36,7 +36,7 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch<Action<any>>): Props => ({
   fetchTrending: () => dispatch(fetchTrendingNextPageAsync.request()),
-  resetGifState: () => dispatch(resetGifState()),
+  resetGifListState: () => dispatch(resetGifListState()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

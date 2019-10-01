@@ -15,7 +15,7 @@ class App extends React.Component {
       <Provider store={store}>
         <Router history={history}>
           <Switch>
-            <Route path="/gifs/:slug" component={ShowGifPage} />
+            <Route path="/gifs/:id" component={ShowGifPage} />
             <Route path="/search/:query" component={SearchPage} />
             <Route path="/" component={HomePage}/>
           </Switch>

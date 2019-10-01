@@ -1,43 +1,26 @@
-import {GifReducerState} from './states/GifReducerState';
 import {createReducer} from 'typesafe-actions';
-import {fetchSearchNextPageAsync, fetchTrendingNextPageAsync, resetGifState} from '../actions/gif.actions';
+import {GifReducerState} from './states/GifReducerState';
+import {fetchGifByIdAsync, resetGifState} from '../actions/gif.actions';
 
 const initialState: GifReducerState = {
-  canLoadMore: true,
-  gifObjects: [],
+  gifObject: undefined,
   hasError: false,
   isLoading: false,
-  pagination: undefined,
 };
 
 export const gifReducer = createReducer<GifReducerState>(initialState)
   .handleAction(resetGifState, () => (initialState))
-  .handleAction([
-    fetchTrendingNextPageAsync.request,
-    fetchSearchNextPageAsync.request,
-  ], (state, action) => ({
+  .handleAction(fetchGifByIdAsync.request, (state, action) => ({
     ...state,
     hasError: false,
     isLoading: true,
   }))
-  .handleAction([
-    fetchTrendingNextPageAsync.success,
-    fetchSearchNextPageAsync.success,
-  ], (state, action) => {
-    const { pagination } = action.payload;
-
-    return {
-      ...state,
-      canLoadMore: pagination.total_count > pagination.offset + pagination.count,
-      gifObjects: [...state.gifObjects, ...action.payload.data],
-      isLoading: false,
-      pagination,
-    };
-  })
-  .handleAction([
-    fetchTrendingNextPageAsync.failure,
-    fetchSearchNextPageAsync.failure,
-  ], (state, action) => ({
+  .handleAction(fetchGifByIdAsync.success, (state, action) => ({
+    ...state,
+    isLoading: false,
+    gifObject: action.payload.data,
+  }))
+  .handleAction(fetchGifByIdAsync.failure, (state, action) => ({
     ...state,
     hasError: true,
     isLoading: false,

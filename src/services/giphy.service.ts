@@ -12,6 +12,10 @@ export function search(params: RequestParameters = {}) {
   return giphy('/v1/gifs/search', params);
 }
 
+export function getGifById(id: string) {
+  return giphy(`/v1/gifs/${id}`);
+}
+
 export function giphy(endpoint: string, query: object = {}) {
   const queryString = qs.stringify({api_key: apiKey, ...query}); // Note, we do allow api_key to be overridden
   const slug = [endpoint, queryString].join('?');

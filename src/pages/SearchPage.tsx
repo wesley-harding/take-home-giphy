@@ -16,9 +16,7 @@ interface DispatchProps {
   resetGifState: () => void;
 }
 
-export interface Props extends DispatchProps, RouteComponentProps<RouteParams> {
-
-}
+export interface Props extends DispatchProps, RouteComponentProps<RouteParams> {}
 
 class SearchPage extends React.Component<Props> {
   componentDidMount(): void {

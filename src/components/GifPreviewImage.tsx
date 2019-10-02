@@ -8,7 +8,8 @@ export interface OwnProps {
 
 class GifPreviewImage extends React.PureComponent<OwnProps> {
   render() {
-    const { fixed_width } = this.props.gifObject.images;
+    const {gifObject} = this.props;
+    const { fixed_width } = gifObject.images;
 
     if (!fixed_width) {
       return null;
@@ -19,7 +20,7 @@ class GifPreviewImage extends React.PureComponent<OwnProps> {
         <Link
           to={`/gifs/${this.props.gifObject.id}`}
         >
-          <img src={fixed_width.url} />
+          <img src={fixed_width.url} alt={gifObject.title || 'Giphy Image without title'} />
         </Link>
       </div>
     );

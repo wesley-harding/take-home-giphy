@@ -51,7 +51,7 @@ class InfiniteGifList extends React.Component<Props> {
   }
 
   renderList() {
-    const {gifObjects} = this.props;
+    const { gifObjects } = this.props;
 
     if (!gifObjects) {
       return null;
@@ -59,11 +59,13 @@ class InfiniteGifList extends React.Component<Props> {
 
     return (
       <div className="images">
-        {gifObjects.map((gifObject) => {
-          return (
-            <GifPreviewImage gifObject={gifObject} key={gifObject.id} />
-          );
-        })}
+        {
+          gifObjects.map((gifObject) => {
+            return (
+              <GifPreviewImage gifObject={gifObject} key={gifObject.id} />
+            );
+          })
+        }
       </div>
     );
   }
@@ -85,8 +87,9 @@ class InfiniteGifList extends React.Component<Props> {
 
     return (
       <div className="error">
-        An error occurred.
-
+        <p>
+          An error occurred.
+        </p>
         <button
           onClick={this.props.loadMoreGifs}
         >
@@ -97,7 +100,7 @@ class InfiniteGifList extends React.Component<Props> {
   }
 
   renderEndOfList() {
-    if(this.props.canLoadMore) {
+    if (this.props.canLoadMore) {
       return null;
     }
 

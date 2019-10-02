@@ -7,9 +7,7 @@ export interface RouteParams {
   query: string;
 }
 
-export interface Props extends RouteComponentProps<RouteParams> {
-
-}
+export interface Props extends RouteComponentProps<RouteParams> {}
 
 export interface State {
   val: string;

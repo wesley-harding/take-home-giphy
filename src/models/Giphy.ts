@@ -7,6 +7,7 @@ import {GiphyResponseMeta} from './giphy/GiphyResponseMeta';
 import {GiphyRequestParameters} from './giphy/GiphyRequestParameters';
 import {GiphyItemResponse} from './giphy/GiphyItemResponse';
 
+// Group Giphy interfaces under one export.
 export {
   GiphyCollectionResponse as CollectionResponse,
   GiphyGifObject as GifObject,

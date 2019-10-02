@@ -1,5 +1,5 @@
 // Defines properties available on various GiphyImageObject models
-
+//
 // Model based on Giphy API Documentation
 // See: https://developers.giphy.com/docs/api/schema#image-object
 export interface GiphyImageProps {

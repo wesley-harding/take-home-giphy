@@ -5,7 +5,9 @@ import {put, call, takeEvery} from '@redux-saga/core/effects';
 
 export function* fetchGifById(action: ReturnType<typeof fetchGifByIdAsync.request>): Generator {
   try {
+    // @ts-ignore: Type 'unknown' is not assignable
     const response: Response = yield call(getGifById, action.payload);
+    // @ts-ignore: Type 'unknown' is not assignable
     const json: ItemResponse = yield response.json();
 
     yield put(fetchGifByIdAsync.success(json));

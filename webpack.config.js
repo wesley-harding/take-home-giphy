@@ -1,5 +1,3 @@
-require( 'dotenv' ).config(); // This needs to be as early as possible so ENV can get updated
-
 const { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');

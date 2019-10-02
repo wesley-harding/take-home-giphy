@@ -1,7 +1,7 @@
 import * as qs from 'query-string';
 import {RequestParameters} from '../models/Giphy';
 
-const apiKey = process.env.GIPHY_API_KEY;
+const apiKey = 'mbnz4RnSb0eyc1K92ZAiqvsVOBSWa8bn';
 const giphyApiBase = 'https://api.giphy.com';
 
 export function trending(params: RequestParameters = {}) {

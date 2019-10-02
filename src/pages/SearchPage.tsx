@@ -1,5 +1,4 @@
 import * as React from 'react';
-import SearchBox from '../components/SearchBox';
 import {Action} from 'typesafe-actions';
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';

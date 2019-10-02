@@ -15,9 +15,12 @@ const selectOffsetParams = (state: RootState) => {
 
 export function* fetchTrendingGifs(action: ReturnType<typeof fetchTrendingNextPageAsync.request>): Generator {
   try {
+    // @ts-ignore: Type 'unknown' is not assignable
     const params: Partial<RequestParameters> = yield select(selectOffsetParams);
 
+    // @ts-ignore: Type 'unknown' is not assignable
     const response: Response = yield call(trending, params);
+    // @ts-ignore: Type 'unknown' is not assignable
     const json: CollectionResponse = yield response.json();
 
     yield put(fetchTrendingNextPageAsync.success(json));
@@ -28,10 +31,13 @@ export function* fetchTrendingGifs(action: ReturnType<typeof fetchTrendingNextPa
 
 export function* fetchSearchGifs(action: ReturnType<typeof fetchSearchNextPageAsync.request>): Generator {
   try {
+    // @ts-ignore: Type 'unknown' is not assignable
     const params: Partial<RequestParameters> = yield select(selectOffsetParams);
     const paramsWithQuery = { ...params, q: action.payload };
 
+    // @ts-ignore: Type 'unknown' is not assignable
     const response: Response = yield call(search, paramsWithQuery);
+    // @ts-ignore: Type 'unknown' is not assignable
     const json: CollectionResponse = yield response.json();
 
     yield put(fetchSearchNextPageAsync.success(json));

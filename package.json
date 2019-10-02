@@ -1,7 +1,7 @@
 {
-  "name": "hotloader",
-  "version": "1.6.0",
-  "description": "A simple template for creating react app using TypeScript with hot reload.",
+  "name": "take-home-giphy",
+  "version": "1.0.0",
+  "description": "A code exercise",
   "main": "index.js",
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' --exclude 'tests/*.{ts,tsx}'",
@@ -11,14 +11,13 @@
     "clean": "rd /s/q built",
     "prepare": "tsc && webpack --progress --config webpack.prod.config.js"
   },
-  "author": "Chun Liu",
+  "author": "Wesley Harding",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chunliu/typescript-react-hot-reload"
+    "url": "https://github.com/wesley-harding/take-home-giphy"
   },
   "dependencies": {
-    "dotenv": "^8.1.0",
     "query-string": "^6.8.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -18,7 +18,6 @@
     "url": "https://github.com/wesley-harding/take-home-giphy"
   },
   "dependencies": {
-    "dotenv": "^8.1.0",
     "query-string": "^6.8.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

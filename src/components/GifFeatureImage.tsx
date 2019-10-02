@@ -7,7 +7,8 @@ export interface OwnProps {
 
 class GifFeatureImage extends React.PureComponent<OwnProps> {
   render() {
-    const {original} = this.props.gifObject.images;
+    const { gifObject } = this.props;
+    const {original} = gifObject.images;
 
     if (!original) {
       return null;
@@ -15,7 +16,13 @@ class GifFeatureImage extends React.PureComponent<OwnProps> {
 
     return (
       <div className="gif-feature-image">
+        <h1>
+          { gifObject.title }
+        </h1>
         <img src={original.url}/>
+        <p>
+          Original: <a href={gifObject.url}>{gifObject.url}</a>
+        </p>
       </div>
     );
   }

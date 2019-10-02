@@ -5,6 +5,7 @@ import GifPreviewImage from './GifPreviewImage';
 import {RootState} from '../reducers/rootReducer';
 import {connect} from 'react-redux';
 import Spinner from './Spinner';
+import './InfiniteGifList.less';
 
 export interface StateProps {
   canLoadMore: boolean;
@@ -36,14 +37,16 @@ class InfiniteGifList extends React.Component<Props> {
 
   render() {
     return (
-      <InfiniteScrollContainer
-        handleMore={this.conditionallyLoadMore}
-      >
-        { this.renderList() }
-        { this.renderLoading() }
-        { this.renderError() }
-        { this.renderEndOfList() }
-      </InfiniteScrollContainer>
+      <div className="infinite-gif-list">
+        <InfiniteScrollContainer
+          handleMore={this.conditionallyLoadMore}
+        >
+          { this.renderList() }
+          { this.renderLoading() }
+          { this.renderError() }
+          { this.renderEndOfList() }
+        </InfiniteScrollContainer>
+      </div>
     );
   }
 
@@ -55,13 +58,13 @@ class InfiniteGifList extends React.Component<Props> {
     }
 
     return (
-      <ul>
+      <div className="images">
         {gifObjects.map((gifObject) => {
           return (
             <GifPreviewImage gifObject={gifObject} key={gifObject.id} />
           );
         })}
-      </ul>
+      </div>
     );
   }
 

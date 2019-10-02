@@ -5,6 +5,7 @@ import {fetchTrendingNextPageAsync, resetGifListState} from '../actions/gifList.
 import {connect} from 'react-redux';
 import SearchBox from '../components/SearchBox';
 import InfiniteGifList from '../components/InfiniteGifList';
+import Header from '../components/Header';
 
 interface Props {
   fetchTrending: () => void;
@@ -19,11 +20,8 @@ class HomePage extends React.Component<Props> {
 
   render() {
     return (
-      <div>
-        <p>Happy coding!</p>
-        <hr/>
-        <SearchBox />
-        <hr/>
+      <div className="page home-page">
+        <Header />
         <InfiniteGifList
           loadMoreGifs={this.props.fetchTrending}
         />

@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import InfiniteGifList from '../components/InfiniteGifList';
 import {fetchSearchNextPageAsync, resetGifListState} from '../actions/gifList.actions';
 import {RouteComponentProps, withRouter} from 'react-router';
+import Header from '../components/Header';
 
 export interface RouteParams {
   query: string;
@@ -28,10 +29,8 @@ class SearchPage extends React.Component<Props> {
 
   render() {
     return (
-      <div>
-        Search Page
-        <SearchBox />
-        <hr/>
+      <div className="page search-page">
+        <Header />
         <InfiniteGifList
           loadMoreGifs={this.props.fetchSearch}
         />

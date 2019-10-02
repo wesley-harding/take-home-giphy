@@ -9,6 +9,7 @@ import {RootState} from '../reducers/rootReducer';
 import Spinner from '../components/Spinner';
 import GifFeatureImage from '../components/GifFeatureImage';
 import Header from '../components/Header';
+import './ShowGifPage.less';
 
 export interface RouteParams {
   id: string;

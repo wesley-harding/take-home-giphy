@@ -3,7 +3,6 @@ import {Action} from 'typesafe-actions';
 import {Dispatch} from 'redux';
 import {fetchTrendingNextPageAsync, resetGifListState} from '../actions/gifList.actions';
 import {connect} from 'react-redux';
-import SearchBox from '../components/SearchBox';
 import InfiniteGifList from '../components/InfiniteGifList';
 import Header from '../components/Header';
 

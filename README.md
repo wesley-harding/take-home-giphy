@@ -24,6 +24,9 @@ My requirements:
 
 I ended up starting with [https://github.com/chunliu/typescript-react-hot-reload](https://github.com/chunliu/typescript-react-hot-reload)
 
+I reset the Git Repo after cloning, so my [first commit](https://github.com/wesley-harding/take-home-giphy/commit/4bf880e2658cc67233e7c6ba541a34e26730c16e)
+was only boilerplate code. A diff of my changes after that commit can be viewed here: https://github.com/wesley-harding/take-home-giphy/compare/4bf880e2658cc67233e7c6ba541a34e26730c16e..master  
+
 
 ### Other design decisions
 

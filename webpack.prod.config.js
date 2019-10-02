@@ -11,6 +11,7 @@ module.exports = {
     output: {
         filename: "hotloader.js",
         path: resolve(__dirname, "dist"),
+        publicPath: "/",
     },
     devtool: "source-map",
     resolve: {
